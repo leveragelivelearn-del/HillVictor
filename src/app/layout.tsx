@@ -190,8 +190,8 @@ export async function generateMetadata(): Promise<Metadata> {
     return {
       metadataBase: new URL(baseUrl),
       title: {
-        default: settings.metaTitle || settings.brandName || "HillVictor",
-        template: `%s | ${settings.brandName || "HillVictor"}`,
+        default: settings.metaTitle || settings.brandName,
+        template: `%s`,
       },
       description: settings.metaDescription || settings.brandName || "Your ultimate destination for quality products.",
       manifest: '/manifest.json',
@@ -203,21 +203,21 @@ export async function generateMetadata(): Promise<Metadata> {
       appleWebApp: {
         capable: true,
         statusBarStyle: 'default',
-        title: settings.brandName || "HillVictor",
+        title: settings.brandName || "Hill Victor",
       },
       formatDetection: {
         telephone: false,
       },
       openGraph: {
-        title: settings.metaTitle || settings.brandName || "HillVictor",
+        title: settings.metaTitle || settings.brandName || "Hill Victor",
         description: settings.metaDescription || settings.brandName || "Your ultimate destination for quality products.",
         url: baseUrl,
-        siteName: settings.brandName || "HillVictor",
+        siteName: settings.brandName || "Hill Victor",
         type: 'website',
       },
       twitter: {
         card: 'summary_large_image',
-        title: settings.metaTitle || settings.brandName || "HillVictor",
+        title: settings.metaTitle || settings.brandName || "Hill Victor",
         description: settings.metaDescription || settings.brandName || "Your ultimate destination for quality products.",
       },
       verification: {
@@ -234,7 +234,7 @@ export async function generateMetadata(): Promise<Metadata> {
     };
   } catch (error) {
     return {
-      title: "HillVictor",
+      title: "Hill Victor",
       description: "Your ultimate destination for quality products.",
     };
   }
@@ -295,9 +295,9 @@ export default async function RootLayout({
 
           {settings?.metaPixelId && (
             <Suspense fallback={null}>
-               <FacebookPixel
-                 pixelId={settings.metaPixelId}
-               />
+              <FacebookPixel
+                pixelId={settings.metaPixelId}
+              />
             </Suspense>
           )}
 

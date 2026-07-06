@@ -123,7 +123,8 @@ export default function FooterV1() {
           <div className="flex flex-col items-center text-center md:items-start md:text-left gap-4 lg:col-span-2">
             <Logo textClassName="text-xl md:text-2xl whitespace-nowrap" />
             <p className="text-sm text-muted-foreground w-full md:w-4/5">
-              Your trusted destination for premium men's clothing, fashion essentials, and high-quality accessories in Bangladesh.
+              If you can dream it, you can do it.
+              So, our dream is best clothing for our customers
             </p>
 
             {/* PWA Download App Button */}
@@ -170,7 +171,7 @@ export default function FooterV1() {
             <ul className="grid gap-3 text-sm text-muted-foreground">
               <li className="flex items-start justify-center md:justify-start gap-3">
                 <MapPin size={16} className="text-primary mt-0.5 shrink-0" />
-                <span>{settings?.contact?.address || '123 HillVictor Avenue'}</span>
+                <span>{settings?.contact?.address || '123 Hill Victor Avenue'}</span>
               </li>
               <li className="flex items-center justify-center md:justify-start gap-3">
                 <Phone size={16} className="text-primary shrink-0" />
@@ -178,7 +179,7 @@ export default function FooterV1() {
               </li>
               <li className="flex items-center justify-center md:justify-start gap-3">
                 <Mail size={16} className="text-primary shrink-0" />
-                <span>{settings?.contact?.email || 'support@HillVictor.com'}</span>
+                <span>{settings?.contact?.email || 'support@Hill Victor.com'}</span>
               </li>
             </ul>
             {hasSocialLinks && (
@@ -222,7 +223,7 @@ export default function FooterV1() {
 
         <div className="mt-12 flex flex-col items-center justify-between border-t py-6 sm:flex-row text-sm text-muted-foreground gap-4">
           <div className="flex flex-col sm:flex-row items-center gap-4">
-            <p>© {new Date().getFullYear()} {settings?.brandName || 'HillVictor'}. All rights reserved.</p>
+            <p>© {new Date().getFullYear()} {settings?.brandName || 'Hill Victor'}. All rights reserved.</p>
           </div>
 
           <div className="flex items-center gap-6">

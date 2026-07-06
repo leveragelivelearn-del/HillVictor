@@ -12,7 +12,7 @@ export async function generateOrganizationSchema(settings: any) {
   return {
     '@context': 'https://schema.org',
     '@type': 'Organization',
-    name: settings.brandName || 'HillVictor',
+    name: settings.brandName || 'Hill Victor',
     url: baseUrl,
     logo: settings.logo,
     contactPoint: {
@@ -41,7 +41,7 @@ export async function generateProductSchema(product: any) {
     sku: product.sku,
     brand: {
       '@type': 'Brand',
-      name: 'HillVictor',
+      name: 'Hill Victor',
     },
     offers: {
       '@type': 'Offer',
@@ -78,7 +78,7 @@ export async function generateBlogSchema(blog: any) {
     dateModified: blog.updatedAt || blog.createdAt,
     author: {
       '@type': 'Organization',
-      name: 'HillVictor',
+      name: 'Hill Victor',
     },
     description: blog.metaDescription || blog.title,
     url: `${baseUrl}/blog/${blog.slug}`,

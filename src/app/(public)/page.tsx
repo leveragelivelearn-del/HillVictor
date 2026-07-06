@@ -48,7 +48,7 @@ export async function generateMetadata(): Promise<Metadata> {
     getCachedBanners()
   ]);
 
-  const brandName = settings?.brandName || 'HillVictor';
+  const brandName = settings?.brandName || 'Hill Victor';
   const metaTitle = settings?.metaTitle || brandName;
   const description = settings?.metaDescription || settings?.siteDescription || 'Your ultimate destination for quality products.';
   const ogImage = banners?.[0]?.image || settings?.logoUrl || '';

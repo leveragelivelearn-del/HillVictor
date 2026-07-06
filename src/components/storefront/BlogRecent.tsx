@@ -35,7 +35,7 @@ export function BlogRecent({ blogs }: BlogRecentProps) {
               Latest from our <span className="text-primary italic">Blog</span>
             </h2>
             <p className="text-muted-foreground max-w-2xl">
-              Discover tips, news, and trends from the HillVictor community.
+              Discover tips, news, and trends from the Hill Victor community.
             </p>
           </div>
           <Button asChild variant="default" className="rounded-full font-bold group">

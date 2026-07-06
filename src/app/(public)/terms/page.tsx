@@ -5,8 +5,8 @@ import { Separator } from '@/components/ui/separator';
 import { FileText, ShoppingBag, Truck, UserCheck, Scale, HelpCircle } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Terms & Conditions | HillVictor',
-  description: 'Understand the terms and conditions for shopping at HillVictor.',
+  title: 'Terms & Conditions | Hill Victor',
+  description: 'Understand the terms and conditions for shopping at Hill Victor.',
 };
 
 async function getSettings() {
@@ -15,9 +15,9 @@ async function getSettings() {
     const settings = await GlobalSettings.findOne().lean();
     if (!settings) {
       return {
-        brandName: "HillVictor",
+        brandName: "Hill Victor",
         contact: {
-          email: "support@HillVictor.com",
+          email: "support@Hill Victor.com",
           phone: "+8801234567890"
         }
       };
@@ -26,9 +26,9 @@ async function getSettings() {
   } catch (error) {
     console.error('Error fetching settings for terms page:', error);
     return {
-      brandName: "HillVictor",
+      brandName: "Hill Victor",
       contact: {
-        email: "support@HillVictor.com",
+        email: "support@Hill Victor.com",
         phone: "+8801234567890"
       }
     };
@@ -38,7 +38,7 @@ async function getSettings() {
 export default async function TermsPage() {
   const settings = await getSettings();
   const brandName = settings.brandName || "RPL Market";
-  const contactEmail = settings.contact?.email || "support@HillVictor.com";
+  const contactEmail = settings.contact?.email || "support@Hill Victor.com";
   const lastUpdated = "April 04, 2026";
 
   return (

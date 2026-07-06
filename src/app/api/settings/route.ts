@@ -32,9 +32,9 @@ export async function GET() {
     const settings = await GlobalSettings.findOne().sort({ updatedAt: -1 });
     if (!settings) {
       return NextResponse.json({
-        brandName: process.env.NEXT_PUBLIC_STORE_NAME || "HillVictor",
+        brandName: process.env.NEXT_PUBLIC_STORE_NAME || "Hill Victor",
         contact: {
-          email: "support@HillVictor.com",
+          email: "support@Hill Victor.com",
           phone: "+8801234567890",
           address: "Dhaka, Bangladesh"
         },
@@ -47,8 +47,8 @@ export async function GET() {
           tiktok: '',
           whatsapp: ''
         },
-        marqueeText: "Welcome to HillVictor!",
-        metaTitle: process.env.NEXT_PUBLIC_STORE_NAME || "HillVictor",
+        marqueeText: "Welcome to Hill Victor!",
+        metaTitle: process.env.NEXT_PUBLIC_STORE_NAME || "Hill Victor",
         metaDescription: "The most popular online shop in Bangladesh.",
         logoUrl: "/logo.webp",
         freeDeliveryThreshold: 0,
