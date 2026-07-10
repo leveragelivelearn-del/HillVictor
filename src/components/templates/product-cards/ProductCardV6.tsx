@@ -3,16 +3,15 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { ShoppingCart, Heart, Search } from 'lucide-react';
+import { ShoppingCart, Heart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { addToCart, clearCart } from '@/store/slices/cartSlice';
 import { toggleWishlist } from '@/store/slices/wishlistSlice';
 import { toast } from 'sonner';
 import { useSession } from 'next-auth/react';
-import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { QuickViewModal } from './QuickViewModal';
+
 import { fbEvent } from '@/lib/fpixel';
 import { ttEvent } from '@/lib/tiktok';
 import {
@@ -63,48 +62,48 @@ export default function ProductCardV6({ product: initialProduct, isFlashSale, pr
 
   const hasVariants = product.variants && product.variants.length > 0;
 
-  const [showQuickViewModal, setShowQuickViewModal] = useState(false);
+
 
   const handleAddToCart = (e: React.MouseEvent) => {
     e.preventDefault();
     if (hasVariants) {
-      setShowQuickViewModal(true);
-    } else {
-      dispatch(addToCart({
-        productId: product._id,
-        name: product.name,
-        price: product.salePrice ?? product.price,
-        basePrice: product.price,
-        quantity: 1,
-        image: product.images?.[0]
-      }));
-
-      // Track AddToCart
-      const addToCartPayload = {
-        content_name: product.name,
-        content_category: 'Beauty',
-        content_ids: [product._id],
-        content_type: 'product',
-        value: product.salePrice || product.price,
-        currency: 'BDT',
-        quantity: 1
-      };
-      const trackingUser = {
-        em: session?.user?.email || undefined,
-        ph: (session?.user as any)?.phone || undefined,
-        fn: session?.user?.name || undefined
-      };
-      fbEvent('AddToCart', addToCartPayload, trackingUser);
-      ttEvent('AddToCart', addToCartPayload, trackingUser);
-
-      toast.success(`${product.name} added to cart`);
+      router.push(`/product/${product.slug}`);
+      return;
     }
+    dispatch(addToCart({
+      productId: product._id,
+      name: product.name,
+      price: product.salePrice ?? product.price,
+      basePrice: product.price,
+      quantity: 1,
+      image: product.images?.[0]
+    }));
+
+    // Track AddToCart
+    const addToCartPayload = {
+      content_name: product.name,
+      content_category: 'Beauty',
+      content_ids: [product._id],
+      content_type: 'product',
+      value: product.salePrice || product.price,
+      currency: 'BDT',
+      quantity: 1
+    };
+    const trackingUser = {
+      em: session?.user?.email || undefined,
+      ph: (session?.user as any)?.phone || undefined,
+      fn: session?.user?.name || undefined
+    };
+    fbEvent('AddToCart', addToCartPayload, trackingUser);
+    ttEvent('AddToCart', addToCartPayload, trackingUser);
+
+    toast.success(`${product.name} added to cart`);
   };
 
   const handleBuyNow = (e: React.MouseEvent) => {
     e.preventDefault();
     if (hasVariants) {
-      setShowQuickViewModal(true);
+      router.push(`/product/${product.slug}`);
       return;
     }
 
@@ -214,23 +213,6 @@ export default function ProductCardV6({ product: initialProduct, isFlashSale, pr
                 <Button
                   size="icon"
                   variant="secondary"
-                  className="h-12 w-12 rounded-full bg-white text-black hover:bg-primary hover:text-white shadow-xl transition-all hover:scale-110"
-                  onClick={(e) => { e.preventDefault(); setShowQuickViewModal(true); }}
-                  aria-label="Quick view product"
-                >
-                  <Search className="h-5 w-5" />
-                </Button>
-              </TooltipTrigger>
-              <TooltipContent>
-                <p>Quick View</p>
-              </TooltipContent>
-            </Tooltip>
-
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <Button
-                  size="icon"
-                  variant="secondary"
                   className={`h-12 w-12 rounded-full bg-white shadow-xl transition-all hover:scale-110 ${isInWishlist ? 'text-primary' : 'text-black hover:bg-primary hover:text-white'}`}
                   onClick={handleWishlist}
                   aria-label={isInWishlist ? "Remove from wishlist" : "Add to wishlist"}
@@ -288,11 +270,7 @@ export default function ProductCardV6({ product: initialProduct, isFlashSale, pr
         </div>
       </div>
 
-      <QuickViewModal
-        product={initialProduct}
-        isOpen={showQuickViewModal}
-        onClose={() => setShowQuickViewModal(false)}
-      />
+
     </div>
   );
 }
