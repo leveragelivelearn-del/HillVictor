@@ -206,14 +206,14 @@ export default function ProductCardV6({ product: initialProduct, isFlashSale, pr
         )}
 
         {/* Hover Actions - Centered circles */}
-        <div className="absolute inset-0 hidden md:flex items-center justify-center gap-3 opacity-0 group-hover:opacity-100 transition-all duration-300 bg-black/5 backdrop-blur-[2px]">
+        <div className="absolute inset-0 hidden md:flex items-center justify-center gap-3 opacity-0 group-hover:opacity-100 transition-all duration-300 bg-black/5 backdrop-blur-[2px] pointer-events-none">
           <TooltipProvider>
             <Tooltip>
               <TooltipTrigger asChild>
                 <Button
                   size="icon"
                   variant="secondary"
-                  className={`h-12 w-12 rounded-full bg-white shadow-xl transition-all hover:scale-110 ${isInWishlist ? 'text-primary' : 'text-black hover:bg-primary hover:text-white'}`}
+                  className={`h-12 w-12 rounded-full bg-white shadow-xl transition-all hover:scale-110 ${isInWishlist ? 'text-primary' : 'text-black hover:bg-primary hover:text-white'} pointer-events-auto`}
                   onClick={handleWishlist}
                   aria-label={isInWishlist ? "Remove from wishlist" : "Add to wishlist"}
                 >
