@@ -73,11 +73,16 @@ export const fbEvent = (
       "Purchase", "AddToCart", "InitiateCheckout", "AddToWishlist"
     ];
 
+    const options: { eventID: string; test_event_code?: string } = { eventID: eventId };
+    if ((window as any).fb_test_event_code) {
+      options.test_event_code = (window as any).fb_test_event_code;
+    }
+
     // If it's not a standard event, track as Custom
     if (!standardEvents.includes(finalEventName)) {
-      window.fbq("trackCustom", finalEventName, customData, { eventID: eventId });
+      window.fbq("trackCustom", finalEventName, customData, options);
     } else {
-      window.fbq("track", finalEventName, customData, { eventID: eventId });
+      window.fbq("track", finalEventName, customData, options);
     }
   }
 

@@ -10,8 +10,10 @@ import Script from "next/script";
 
 export default function FacebookPixel({
   pixelId,
+  testEventCode,
 }: {
   pixelId?: string;
+  testEventCode?: string;
 }) {
   const [mounted, setMounted] = useState(false);
   const [scriptLoaded, setScriptLoaded] = useState(false);
@@ -21,6 +23,12 @@ export default function FacebookPixel({
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  useEffect(() => {
+    if (typeof window !== "undefined" && testEventCode) {
+      (window as any).fb_test_event_code = testEventCode;
+    }
+  }, [testEventCode]);
 
   // Shared eventId across browser pixel and CAPI for deduplication
   // Initialize with a dummy or empty string during SSR

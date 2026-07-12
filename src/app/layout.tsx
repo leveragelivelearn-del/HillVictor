@@ -297,6 +297,7 @@ export default async function RootLayout({
             <Suspense fallback={null}>
               <FacebookPixel
                 pixelId={settings.metaPixelId}
+                testEventCode={settings.facebookTestEventCode}
               />
             </Suspense>
           )}
