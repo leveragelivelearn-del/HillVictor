@@ -200,6 +200,18 @@ export default async function Home() {
       {/* 4. Categories Showcase */}
       <CategoryShowcase categories={data.categories} style={ui.categories} />
 
+      {/* 5. New Arrivals */}
+      {data.newArrivals.length > 0 && (
+        <ProductCarouselSection
+          title="New Arrivals"
+          description="Discover the latest additions to our collection. Stay ahead of the curve."
+          products={data.newArrivals}
+          viewAllLink="/shop?filter=new"
+          bgColor="bg-background"
+          cardStyle={ui.productCard}
+        />
+      )}
+
       {/* 8. Featured Products */}
       {data.featuredProducts.length > 0 && (
         <ProductCarouselSection
@@ -245,17 +257,7 @@ export default async function Home() {
       {/* 9. Recent Blogs section */}
       <BlogRecent blogs={data.blogs} />
 
-      {/* 5. New Arrivals */}
-      {data.newArrivals.length > 0 && (
-        <ProductCarouselSection
-          title="New Arrivals"
-          description="Discover the latest additions to our collection. Stay ahead of the curve."
-          products={data.newArrivals}
-          viewAllLink="/shop?filter=new"
-          bgColor="bg-background"
-          cardStyle={ui.productCard}
-        />
-      )}
+
 
       {/* 2. Our Features (Trust Badges) */}
       <FeaturesSection />
