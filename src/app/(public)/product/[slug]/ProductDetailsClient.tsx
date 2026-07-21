@@ -478,8 +478,8 @@ export default function ProductDetailsClient({ product }: ProductDetailsClientPr
           <div className="space-y-3 pt-2">
             {product.attributes?.map((attr: any, i: number) => (
               <div key={i} className="flex items-center gap-4">
-                <span className="text-xs font-bold min-w-[80px] uppercase tracking-wider text-muted-foreground">{attr.key}:</span>
-                <span className="text-xs font-medium">{attr.value}</span>
+                <span className="text-xs md:text-sm font-bold min-w-[90px] md:min-w-[140px] uppercase tracking-wider text-muted-foreground">{attr.key}:</span>
+                <span className="text-xs md:text-sm font-semibold text-foreground">{attr.value}</span>
               </div>
             ))}
           </div>
